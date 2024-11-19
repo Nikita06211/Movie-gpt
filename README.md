@@ -16,6 +16,8 @@
 - Implemented Sign Out
 - Update Profile
 - Fetch from TMDB Movies
+- Registered for TMDB
+- Get data from TMDB 
 
 # Features 
 - Login/Sign Up
