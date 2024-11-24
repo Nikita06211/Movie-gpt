@@ -15,6 +15,7 @@ const Header = () => {
   const user = useSelector(store => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();  
+  const showGptSearch = useSelector((store)=> store.gpt.showGptSearch);
 
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -49,6 +50,7 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   }
 
+
   const handleLanguageChange = (e) =>{
     dispatch(changeLanguage(e.target.value));
   }
@@ -58,10 +60,11 @@ const Header = () => {
       <img className='w-44' src={LOGO}
       alt='logo'/>
       {user && <div className='flex p-2'>
-        <select className='p-2 my-2 bg-slate-800 text-white rounded-md text-lg' onChange={handleLanguageChange}>
+        {showGptSearch && <select className='p-2 my-2 bg-slate-800 text-white rounded-md text-lg' onChange={handleLanguageChange}>
           {SUPPORTED_LANGUAGES.map(lang=> <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
-        </select>
-        <button onClick={handleGptSearch} className='py-2 px-4 m-2 mx-8 bg-gray-200 rounded-md text-black text-lg font-semibold'>Smart Search ⌕</button>
+        </select>}
+        {!showGptSearch && <button onClick={handleGptSearch} className='py-2 px-4 m-2 mx-8 bg-gray-200 rounded-md text-black text-lg font-semibold'>Smart Search ⌕</button>}
+        {showGptSearch && <button onClick={handleGptSearch} className='py-2 px-4 m-2 mx-8 bg-gray-200 rounded-md text-black text-lg font-semibold'>Home</button>}
         <img 
           className='w-12 h-12 '
           src = {user?.photoURL}
