@@ -6,10 +6,12 @@ export const API_OPTIONS = {
     method: 'GET',
     headers: {
         accept : 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjhkZGYyNjA0NzU1MDIyNjZiOTFkMDEzMjM0OGI5ZSIsIm5iZiI6MTczMTc0NjI0My4zNjc2NTMxLCJzdWIiOiI2NzM4NTdlYTljMTZkYWZhMDZmOTliOWEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.AYKvNLR9RkiJ0vmJ4BEGc6JJdZ3Rmb7rq1x_eLAinhA'
-    }
+        Authorization: "Bearer" + process.env.REACT_APP_TMDB_KEY,
+    },
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
 
 export const SUPPORTED_LANGUAGES = [{identifier:"en", name:"English"},{identifier:"hindi", name:"Hindi"},{identifier:"spanish", name:"Spanish"}];
+
+export const GROQ_KEY = process.env.REACT_APP_GROQ_KEY;
